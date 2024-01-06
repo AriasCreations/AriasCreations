@@ -1,0 +1,12 @@
+{
+    "ac":
+    {
+        "host": "ac.zontreck.com",
+        "port": 443
+    },
+    "api": 
+    {
+        "host": "api.zontreck.com",
+        "port": 443
+    }
+}
