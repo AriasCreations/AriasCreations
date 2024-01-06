@@ -2,11 +2,13 @@
     "ac":
     {
         "host": "ac.zontreck.com",
-        "port": 443
+        "port": 443,
+        "protocol": "https"
     },
     "api": 
     {
         "host": "api.zontreck.com",
-        "port": 443
+        "port": 443,
+        "protocol": "https"
     }
 }
