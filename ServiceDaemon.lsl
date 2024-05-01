@@ -7,7 +7,7 @@ default
     state_entry()
     {
         CHECK_PERIOD = (6*60*60);
-        llSetTimerEvent(60);
+        llSetTimerEvent(20);
     }
     timer()
     {
@@ -50,6 +50,7 @@ default
 
                 llMessageLinked(LINK_SET, 0x004f, sBody, "");
             } else {
+                LAST_CHECK = llGetUnixTime() + CHECK_PERIOD - (10*60);
                 llMessageLinked(LINK_SET, 0x004e, "", ""); // No such file, or temporary error
             }
         }
