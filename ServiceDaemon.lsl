@@ -1,5 +1,6 @@
 integer CHECK_PERIOD = 0;
 integer LAST_CHECK = 0;
+key g_kRequestID = NULL_KEY;
 
 default
 {
@@ -23,6 +24,14 @@ default
         if(iChange & CHANGED_INVENTORY)
         {
             LAST_CHECK=0;
+        }
+    }
+
+    link_message(integer s,integer n,string m,key i)
+    {
+        if(n == -1)
+        {
+            llResetScript();
         }
     }
 
