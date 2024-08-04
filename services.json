@@ -10,5 +10,11 @@
         "host": "api.zontreck.com",
         "port": 443,
         "protocol": "https"
+    },
+    "ci":
+    {
+        "host": "ci.zontreck.com",
+        "port": 443,
+        "protocol": "https"
     }
 }
