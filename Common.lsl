@@ -1,6 +1,10 @@
 
 integer g_iDebugIndent=0;
 integer DEBUG_ENABLED() {
+    #ifdef DEBUG_OVERRIDE
+    return TRUE;
+    #endif
+    
     return FALSE;
 }
 
