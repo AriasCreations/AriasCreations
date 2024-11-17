@@ -98,7 +98,7 @@ list StrideOfList(list src, integer stride, integer start, integer end)
 list g_lDSRequests;
 
 UpdateDSRequest(key orig, key new, string meta){
-    if(orig == NULL){
+    if(orig == NULL_KEY){
         g_lDSRequests += [new,meta];
     }else {
         integer index = HasDSRequest(orig);
