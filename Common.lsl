@@ -178,7 +178,7 @@ string Uncheckbox(string sLabel)
 
 string getPermissionsAsStr(integer iPerm)
 {
-    if(iPerm == -1) {
+    if(iPerm == -999) {
         return "not applicable";
     }
 
