@@ -178,10 +178,6 @@ string Uncheckbox(string sLabel)
 
 string getPermissionsAsStr(integer iPerm)
 {
-    if(iPerm == -999) {
-        return "not applicable";
-    }
-
     integer iFullPerms = PERM_COPY | PERM_MODIFY | PERM_TRANSFER; // We do not care about move permissions in this function. This function pre-dates PERM_MOVE
     integer iCopyModPerms = PERM_COPY | PERM_MODIFY;
     integer iCopyTransPerms = PERM_COPY | PERM_TRANSFER;
@@ -219,9 +215,9 @@ string getInvPermsNext(string sInv) {
 }
 
 string getObjectPermsCurrent() {
-    return llGetObjectPermMask(MASK_OWNER);
+    return getPermissionsAsStr(llGetObjectPermMask(MASK_OWNER));
 }
 
 string getObjectPermsNext() {
-    return llGetObjectPermMask(MASK_NEXT);
+    return getPermissionsAsStr(llGetObjectPermMask(MASK_NEXT));
 }
