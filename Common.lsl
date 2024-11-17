@@ -95,6 +95,7 @@ list StrideOfList(list src, integer stride, integer start, integer end)
     return l;
 }
 
+list g_lDSRequests;
 
 UpdateDSRequest(key orig, key new, string meta){
     if(orig == NULL){
