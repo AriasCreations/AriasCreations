@@ -4,7 +4,7 @@ integer DEBUG_ENABLED() {
     #ifdef DEBUG_OVERRIDE
     return TRUE;
     #endif
-    
+
     return FALSE;
 }
 
@@ -162,6 +162,8 @@ integer bool(integer a){
     if(a)return TRUE;
     else return FALSE;
 }
+
+list g_lCheckboxes = ["[ ]", "[X]"];
 string Checkbox(integer iValue, string sLabel) {
     return llList2String(g_lCheckboxes, bool(iValue))+" "+sLabel;
 }
@@ -176,6 +178,10 @@ string Uncheckbox(string sLabel)
 
 string getPermissionsAsStr(integer iPerm)
 {
+    if(iPerm == -1) {
+        return "not applicable";
+    }
+    
     integer iFullPerms = PERM_COPY | PERM_MODIFY | PERM_TRANSFER; // We do not care about move permissions in this function. This function pre-dates PERM_MOVE
     integer iCopyModPerms = PERM_COPY | PERM_MODIFY;
     integer iCopyTransPerms = PERM_COPY | PERM_TRANSFER;
