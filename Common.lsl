@@ -168,3 +168,48 @@ string Uncheckbox(string sLabel)
     integer iBoxLen = 1+llStringLength(llList2String(g_lCheckboxes,0));
     return llGetSubString(sLabel,iBoxLen,-1);
 }
+
+
+string getPermissionsAsStr(integer iPerm)
+{
+    integer iFullPerms = PERM_COPY | PERM_MODIFY | PERM_TRANSFER; // We do not care about move permissions in this function. This function pre-dates PERM_MOVE
+    integer iCopyModPerms = PERM_COPY | PERM_MODIFY;
+    integer iCopyTransPerms = PERM_COPY | PERM_TRANSFER;
+    integer iModTransPerms = PERM_MODIFY | PERM_TRANSFER;
+    string sOutput = "";
+    if ((iPerm & iFullPerms) == iFullPerms)
+        sOutput += "full";
+    else if ((iPerm & iCopyModPerms) == iCopyModPerms)
+        sOutput += "copy & modify";
+    else if ((iPerm & iCopyTransPerms) == iCopyTransPerms)
+        sOutput += "copy & transfer";
+    else if ((iPerm & iModTransPerms) == iModTransPerms)
+        sOutput += "modify & transfer";
+    else if ((iPerm & PERM_COPY) == PERM_COPY)
+        sOutput += "copy";
+    else if ((iPerm & PERM_TRANSFER) == PERM_TRANSFER)
+        sOutput += "transfer";
+    else
+        sOutput += "none";
+    return  sOutput;
+}
+
+integer getInvPerms(string sInv, integer iMask) {
+    return llGetInventoryPermMask(sInv, iMask);
+}
+
+string getInvPermsCurrent(string sInv) {
+    return getPermissionsAsStr(getInvPerms(sInv, MASK_OWNER));
+}
+
+string getInvPermsNext(string sInv) {
+    return getPermissionsAsStr(getInvPerms(sInv, MASK_NEXT));
+}
+
+string getObjectPermsCurrent() {
+    return llGetObjectPermMask(MASK_OWNER);
+}
+
+string getObjectPermsNext() {
+    return llGetObjectPermMask(MASK_NEXT);
+}
