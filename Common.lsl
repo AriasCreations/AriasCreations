@@ -142,7 +142,7 @@ list GetMetaList(key kID){
     return llParseStringKeepNulls(GetDSMeta(kID), [":"],[]);
 }
 
-
+integer TOGGLE = -99;
 integer mask(integer states, integer source, integer mask)
 {
     if(states==TOGGLE)
@@ -181,7 +181,7 @@ string getPermissionsAsStr(integer iPerm)
     if(iPerm == -1) {
         return "not applicable";
     }
-    
+
     integer iFullPerms = PERM_COPY | PERM_MODIFY | PERM_TRANSFER; // We do not care about move permissions in this function. This function pre-dates PERM_MOVE
     integer iCopyModPerms = PERM_COPY | PERM_MODIFY;
     integer iCopyTransPerms = PERM_COPY | PERM_TRANSFER;
@@ -197,6 +197,8 @@ string getPermissionsAsStr(integer iPerm)
         sOutput += "modify & transfer";
     else if ((iPerm & PERM_COPY) == PERM_COPY)
         sOutput += "copy";
+    else if((iPerm & PERM_MODIFY) == PERM_MODIFY)
+        sOutput += "modify";
     else if ((iPerm & PERM_TRANSFER) == PERM_TRANSFER)
         sOutput += "transfer";
     else
